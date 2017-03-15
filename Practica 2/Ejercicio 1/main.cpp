@@ -1,7 +1,7 @@
 //autor: yehimer urbina
-//version: 0.1v
-//estatus: asignacion de conteos sin finalizar
-//bugs: sin determinar por el instante
+//version: 0.2v
+//estatus: suma definitiva no probada
+//bugs: estable (sin bugs)
 #include <iostream>
 #include <conio.h>
 #include <stdlib.h>
@@ -14,7 +14,7 @@ using namespace std;
 //metodo de conteo 
 int conteo(){
 FILE *fl;
-int rep=0 ,maria[rep] ,juan[rep] ,win=0 ,caso=0 ,resul=0;
+int rep=0 ,maria[rep] ,juan[rep] ,win=0 ,minwin=0,caso=0 ,resul=0;
 char *x ,buffer[100];
 fl=fopen("pares.txt" , "r+");
 if(!fl)
@@ -42,36 +42,64 @@ else
 				juan[0] = atoi(buffer);
 				//comprobacion 
 				resul = maria[0] + juan[0];
-				if(resul % 2 != 0){
+				if(resul %2 != 0){
 					win=1;
-					cout<<"CASO #"<<caso<<":"<<win<<endl;
+					cout<<"CASO #"<<caso<<": "<<win<<endl;
 				}
 				else
-					cout<<"CASO #"<<caso<<":"<<win<<endl;
+					cout<<"CASO #"<<caso<<": "<<win<<endl;
 			}
 			// de otro modo para multiples jugadas
-			else
+			else{
 				//picando jugadas de maria
 				x = strtok(buffer , " ");
 				maria[0] = atoi(x);
 				//i=1 por que ya se tomo la primera jugada
-				for(int i=1 ; i <= rep ; i++){
+				for(int i=1 ; i < rep ; i++){
 					//comprobante de final de linea
-					if(i == rep){
+					if(i == rep-1){
 						x = strtok(NULL , "\n");
 						maria[i] = atoi(x);
 					}
 					//de otro modo hasta encontrar fin de linea
-					else
+					else{
 						x = strtok(NULL , " ");
 						maria[i] = atoi(x);
+					}
+				}	
+					//re-alimentando buffer
+					fgets(buffer,100,fl);
+					//picando jugadas juan
+					x = strtok(buffer , " ");
+					juan[0] = atoi(x);
+					//i=1 por que ya se tomo la primera jugada
+				for(int i=1 ; i < rep ; i++){
+					//comprobante de final de linea
+					if(i == rep-1){
+						x = strtok(NULL , "\n");
+						juan[i] = atoi(x);
+					}
+					//de otro modo hasta encontrar fin de linea
+					else{
+						x = strtok(NULL , " ");
+						juan[i] = atoi(x);
+					}	
 				}
-				
-				
-		}		
+			// inicio de suma definitiva
+			for(int i=0 ; i < rep ; i++){
+				for(int j=0 ; j < rep ; j++){
+					resul = maria[i] + juan[j];
+					// si gano maria 
+					if(resul %2 !=0 )
+						win++;
+				}
+				if(win < minwin)
+				minwin = win;
+			}
+			}
+		}
 	}
 }
-
 int main(int argc, char** argv) {
 	conteo();
 	getch();
