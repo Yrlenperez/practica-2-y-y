@@ -1,7 +1,7 @@
 //autor: yehimer urbina
-//version: 0.2v
-//estatus: suma definitiva no probada
-//bugs: estable (sin bugs)
+//version: 0.3v
+//estatus: vereficasion de suma pendiente
+//bugs: evaluacion erronea al conteo de minwin (condicion if mala L-97)
 #include <iostream>
 #include <conio.h>
 #include <stdlib.h>
@@ -87,15 +87,19 @@ else
 				}
 			// inicio de suma definitiva
 			for(int i=0 ; i < rep ; i++){
+				
 				for(int j=0 ; j < rep ; j++){
 					resul = maria[i] + juan[j];
 					// si gano maria 
 					if(resul %2 !=0 )
 						win++;
 				}
+				//verificasion de menor de veces ganado por maria
 				if(win < minwin)
-				minwin = win;
+					minwin = win;
+					win=0;
 			}
+			cout<<"CASO #"<<caso<<": "<<win<<endl;
 			}
 		}
 	}
