@@ -106,4 +106,5 @@ else
 }
 int main(int argc, char** argv) {
 	conteo();
+	getch();
 }
