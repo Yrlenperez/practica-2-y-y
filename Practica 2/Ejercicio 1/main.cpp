@@ -1,7 +1,7 @@
-//autor: yehimer urbina
-//version: 0.3v
-//estatus: vereficasion de suma pendiente
-//bugs: evaluacion erronea al conteo de minwin (condicion if mala L-97)
+//autor: yehimer urbina & yrlen perez
+//version: 0.4v
+//estatus: problema con partidas multiples
+//bugs: falla al comprobar multiples partidas simultaneamente
 #include <iostream>
 #include <conio.h>
 #include <stdlib.h>
@@ -14,7 +14,7 @@ using namespace std;
 //metodo de conteo 
 int conteo(){
 FILE *fl;
-int rep=0 ,maria[rep] ,juan[rep] ,win=0 ,minwin=0,caso=0 ,resul=0;
+int rep=0 ,maria[20] ,juan[20] ,win=0 ,minwin=99,caso=0 ,resul=0;
 char *x ,buffer[100];
 fl=fopen("pares.txt" , "r+");
 if(!fl)
@@ -95,11 +95,11 @@ else
 						win++;
 				}
 				//verificasion de menor de veces ganado por maria
-				if(win < minwin)
+				if(minwin > win)
 					minwin = win;
 					win=0;
 			}
-			cout<<"CASO #"<<caso<<": "<<win<<endl;
+			cout<<"CASO #"<<caso<<": "<<minwin<<endl;
 			}
 		}
 	}
