@@ -1,7 +1,7 @@
 //autor: yehimer urbina & yrlen perez
-//version: 0.4v
-//estatus: problema con partidas multiples
-//bugs: falla al comprobar multiples partidas simultaneamente
+//version: 0.6v
+//estatus: pendiente pulir suma final
+//bugs: win=0 reinicio prematuro del contandor  ( L-100) reposicionarlo
 #include <iostream>
 #include <conio.h>
 #include <stdlib.h>
