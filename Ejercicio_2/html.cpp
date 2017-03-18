@@ -10,7 +10,7 @@ using namespace std;
 int main(int argc, char** argv) {
 	string buffer,copia;
 	int tam;
-	vector< int > almacen;
+	vector< char > almacen;
 	Archivo *archi = new Archivo( "html.txt" );
 	archi->abrir();
 	while( !archi->isFinal() )
@@ -19,6 +19,7 @@ int main(int argc, char** argv) {
 			tam = strlen( buffer.c_str() );
 			cout<<buffer<<endl;
 			for( int i = 0; i < tam; i++ )
+			{
 				if( buffer[ i ] == '<' && buffer[ i+2 ] == '>' )
 				{
 					char* h = new char[ buffer.length() +1 ];
@@ -26,21 +27,25 @@ int main(int argc, char** argv) {
 					strcpy(h,copia.c_str());
 					if(isupper(h[0]))
 					{
+						almacen.push_back(h[0]);
 						cout<<h<<endl;	
-					}
-					
+					}	
 				}
 				else if( buffer[ i ] == '<' && buffer[ i+3 ] == '>' )
 				{
 					char* h = new char[ buffer.length() +1 ];
-					copia=buffer[i+2];
-					strcpy(h,copia.c_str());
-					if(isupper(h[0]) && buffer[ i+1 ] == '/' )
+					copia = buffer[ i+2 ];
+					strcpy( h, copia.c_str( ) );
+					if( isupper( h[ 0 ] ) && buffer[ i+1 ] == '/' )
 					{
+						almacen.push_back(h[0]);
 						cout<<"/"<<h<<endl;	
-					}
-					
-				}
+					}	
+				}	
+			}
+				
 		}
+	for(int i=0;i<almacen.size();i++)
+	cout<<almacen[i]<<" ";
 	return 0;
 }
