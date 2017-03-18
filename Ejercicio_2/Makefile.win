@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = html.o
-LINKOBJ  = html.o
+OBJ      = html.o Archivo.o
+LINKOBJ  = html.o Archivo.o
 LIBS     = -L"C:/Dev-Cpp/MinGW64/lib32" -L"C:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32
 INCS     = -I"C:/Dev-Cpp/MinGW64/include" -I"C:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
 CXXINCS  = -I"C:/Dev-Cpp/MinGW64/include" -I"C:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"C:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
@@ -26,3 +26,6 @@ $(BIN): $(OBJ)
 
 html.o: html.cpp
 	$(CPP) -c html.cpp -o html.o $(CXXFLAGS)
+
+Archivo.o: Archivo.cpp
+	$(CPP) -c Archivo.cpp -o Archivo.o $(CXXFLAGS)
