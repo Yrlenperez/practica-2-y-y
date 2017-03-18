@@ -106,17 +106,17 @@ int conteo()
 							win++;
 					}
 					//verificasion de menor de veces ganado por maria
-					if(minwin > win)
+					if( minwin > win )
 						minwin = win;
-						win=0;
+						win = 0;
 				}
-				cout<<"CASO #"<<caso<<": "<<minwin<<endl;
+				cout << "CASO #" << caso << ": " << minwin << endl;
 				}
 			}
 		}
 }
 
 int main(int argc, char** argv) {
-	conteo();
-	getch();
+	conteo( );
+	getch( );
 }
