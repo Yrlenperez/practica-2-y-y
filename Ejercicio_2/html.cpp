@@ -3,11 +3,12 @@
 #include <stdlib.h>
 #include <vector>
 #include "Archivo.h"
-
+#include <stdio.h>
+#include <ctype.h>
 using namespace std;
 
 int main(int argc, char** argv) {
-	string buffer;
+	string buffer,copia;
 	int tam;
 	Archivo *archi = new Archivo( "html.txt" );
 	archi->abrir();
@@ -15,7 +16,19 @@ int main(int argc, char** argv) {
 		{
 			buffer = archi->leerCampo( '\n' );
 			tam = strlen( buffer.c_str() );
-			cout << buffer << endl;
+			cout<<buffer<<endl;
+			for( int i = 0; i < tam; i++ )
+				if( buffer[ i ] == '<' && buffer[ i+2 ] == '>' )
+				{
+					char* h = new char[ buffer.length() +1 ];
+					copia=buffer[i+1];
+					strcpy(h,copia.c_str());
+					if(isupper(h[0]))
+					{
+						cout<<h<<endl;	
+					}
+					
+				}
 		}
 	return 0;
 }
