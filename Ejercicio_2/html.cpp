@@ -7,8 +7,8 @@
 #include <ctype.h>
 
 using namespace std;
-
-int main(int argc, char** argv) {
+	
+void valid_html( ){
 	string buffer, copia;
 	int tam, tama, tama2, band = 0, band1 = 0, cont = 1, con = 0, div;
 	vector< char > almacen;
@@ -110,6 +110,10 @@ int main(int argc, char** argv) {
 				almacen.clear();
 			}
 			cont++;	
-		}
+		}	
+}
+
+int main(int argc, char** argv) {
+	valid_html();
 	return 0;
 }

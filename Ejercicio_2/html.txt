@@ -3,3 +3,4 @@
 El siguiente text <C><B>está centrado y en negrita</B></C>#
 <B>Esto <\g>es <B>negrita</B> en <<*> y </B> <\6> <<d>oración#
 <B><C> Este testo esta centrado y en negrita pero las etiquetas están mal cerradas</B></C>#
+<J>este es <H> aca est </H> y</J>#
