@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char** argv) {
 	string buffer, copia;
-	int tam, tama, band=0;
+	int tam, tama, band=0, cont=1;
 	vector< char > almacen;
 	Archivo *archi = new Archivo( "html.txt" );
 	archi->abrir();
@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
 							{
 								if(band==0)
 								{
-									cout<<almacen[0]<<" la que inicia es la que cierra "<<almacen[tama-1]<<endl;
+									cout<<"Caso #"<<cont<<": Codigo valido"<<endl;
 									band=1;
 								}
 								
@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
 				
 				almacen.clear();
 			}
-				
+			cont++;	
 		}
 	
 	return 0;
