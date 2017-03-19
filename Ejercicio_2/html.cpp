@@ -5,11 +5,12 @@
 #include "Archivo.h"
 #include <stdio.h>
 #include <ctype.h>
+
 using namespace std;
 
 int main(int argc, char** argv) {
 	string buffer, copia;
-	int tam, tama, band=0, band1=0, cont=1;
+	int tam, tama, tama2, band=0, band1=0, cont=1, con =0, div;
 	vector< char > almacen;
 	Archivo *archi = new Archivo( "html.txt" );
 	archi->abrir();
@@ -17,8 +18,8 @@ int main(int argc, char** argv) {
 		{
 			buffer = archi->leerCampo( '\n' );
 			tam = strlen( buffer.c_str() );
-			band=0;
-			cout<<endl<<buffer<<endl;
+			band = band1 = 0;
+			//cout<<endl<<buffer<<endl;
 			for( int i = 0; i < tam; i++ )
 			{
 				if( buffer[ i ] == '<' && buffer[ i+2 ] == '>' )
@@ -29,7 +30,7 @@ int main(int argc, char** argv) {
 					if(isupper(h[0]))
 					{
 						almacen.push_back(h[0]);
-						cout<<h<<endl;	
+					//	cout<<h<<endl;	
 					}	
 				}
 				else if( buffer[ i ] == '<' && buffer[ i+3 ] == '>' )
@@ -40,13 +41,14 @@ int main(int argc, char** argv) {
 					if( isupper( h[ 0 ] ) && buffer[ i+1 ] == '/' )
 					{
 						almacen.push_back(h[0]);
-						cout<<"/"<<h<<endl;	
+					//	cout<<"/"<<h<<endl;	
 					}	
 				}	
 			}
 			if( buffer[ tam - 1 ] == '#' )
 			{
 				tama = almacen.size();
+				div=tama/2;
 				if(tama % 2 == 0)
 				{
 					if( almacen[0] == almacen[tama-1] )
@@ -82,11 +84,24 @@ int main(int argc, char** argv) {
 							}	
 						}	
 				}
-				else if( almacen[0] != almacen[tama-1] )
-				{
+				else if( almacen[0] != almacen[tama-1])
+				{ 
+				while(con<almacen.size() && con+1<almacen.size()){
+					if(almacen[con]==almacen[con+1]){
+						almacen.erase(almacen.begin()+con,almacen.begin()+con+2);
+						if(con>=div)	{
 					cout<<"Caso #"<<cont<<": Se esperaba </"
-					<<almacen[0]<<"> pero se encontro #"<<endl;
+					<<almacen[0]<<"> pero se encontro #"<<endl;	
+					}
+					else if(con<=div){
+					cout<<"Caso #"<<cont<<": Se esperaba #"
+					<<" pero se encontro </"<<almacen[0]<<">"<<endl;		
+					}
+					}
+					con++;
 				}
+				}
+		
 				almacen.clear();
 			}
 			cont++;	
