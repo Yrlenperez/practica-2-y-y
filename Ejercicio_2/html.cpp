@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char** argv) {
 	string buffer, copia;
-	int tam, tama, band=0, cont=1;
+	int tam, tama, band=0, band1=0, cont=1;
 	vector< char > almacen;
 	Archivo *archi = new Archivo( "html.txt" );
 	archi->abrir();
@@ -46,38 +46,50 @@ int main(int argc, char** argv) {
 			}
 			if( buffer[ tam - 1 ] == '#' )
 			{
-				//for(int i=0;i<almacen.size();i++)
-				//cout<<almacen[i]<<" ";
 				tama = almacen.size();
 				if(tama % 2 == 0)
 				{
-					//if( strcmp(&almacen[0], &almacen[tama-1]) )
-					if( almacen[0]== almacen[tama-1] )
+					if( almacen[0] == almacen[tama-1] )
 					{
-						for(int i=tama/2,j=i-1; i>0 && i<tama-1 && j>0 && j<tama-1;i++,j--)
+						for(int i=tama/2,j=i-1; i>0 && 
+						i<tama-1 && j>0 && j<tama-1;i++,j--)
 						{
 							if( almacen[i]== almacen[j] )
 							{
 								if(band==0)
 								{
-									cout<<"Caso #"<<cont<<": Codigo valido"<<endl;
+									cout<<"Caso #"<<cont
+									<<": Codigo valido"<<endl;
 									band=1;
-								}
-								
-							}
-								
-						}
-						
+								}	
+							}		
+						}	
 					}
-				
-						
-					
+					else 
+						{
+							for(int i=tama/2,j=i-1; i>0 && 
+							i<tama-1 && j>0 && j<tama-1;i++,j--)
+							{
+								if( almacen[i] != almacen[j] )
+								{
+									if( band1 == 0 )
+									{
+										cout<<"caso #"<<cont<<": Se esperaba </"<<almacen[j]
+										<<"> pero se encontro </"<<almacen[i]<<">"<<endl;
+										band1=1;
+									}
+								}
+							}	
+						}	
 				}
-				
+				else if( almacen[0] != almacen[tama-1] )
+				{
+					cout<<"Caso #"<<cont<<": Se esperaba </"
+					<<almacen[0]<<"> pero se encontro #"<<endl;
+				}
 				almacen.clear();
 			}
 			cont++;	
 		}
-	
 	return 0;
 }
