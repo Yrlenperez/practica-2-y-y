@@ -1,5 +1,5 @@
-El <C><B>esta</B></C>#
-<B><C>E <\g>es <B>nea</B> en <<*> y </C></B> <\6> <<d>oraón#
-<B><C>  enas</B></C>#
-<B>Estentrar</B></C>#
-<B><C>le re</C>#
+<B>Esto debería ser negrita pero le falta una etiqueta de centrar</B></C>#
+<G><C>Esto debería estar en negrita pero le falta una etiqueta decierre</C>#
+El siguiente text <C><B>está centrado y en negrita</B></C>#
+<B>Esto <\g>es <B>negrita</B> en <<*> y </B> <\6> <<d>oración#
+<B><C> Este testo esta centrado y en negrita pero las etiquetas están mal cerradas</B></C>#
