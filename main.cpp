@@ -30,12 +30,18 @@ int conteo()
 				caso++;
 				win = 0;
 				rep = 0;
+				minwin = 99;
 				//alimentando buffer
 				fgets( buffer, 100, fl );
 				//obtencion de repeticiones
 				rep = atoi( buffer );
 				//re-alimentacion de buffer
 				fgets( buffer, 100, fl );
+				if( rep == 0 )
+				{
+					cout << "Fin" << endl;
+					return 0;
+				}
 				//para solo tomar una jugada si rep==1
 				if( rep == 1 )
 				{
